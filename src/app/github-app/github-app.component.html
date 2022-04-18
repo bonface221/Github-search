@@ -1,0 +1,68 @@
+<div class="text-center main mt-5">
+    <div class="mb-4 pt-5" id="arrow">
+        <h2 class="h2 text-info mb-3 
+            ">Search on Github <i class="bi bi-postcard-heart"></i>
+        </h2>
+
+    </div>
+
+    <div class="mb-4 ">
+        <!-- Search form -->
+        <input class="form-control" name="userName" type="text" (keyup)='getUsers()'
+            [(ngModel)]="userName" placeholder="Search" >
+
+    </div>
+    <div class="mb-4">
+        <a target="_blank" class="btn btn-primary btn-lg text-white" type="button"
+            (click)="getUsers()">Find User
+            <i class="bi bi-search ml-2"></i>
+        </a>
+    </div>
+    <div class="form-group mb-4">
+        <a target="_blank" class="btn btn-primary btn-lg text-white" type="button"
+            (click)="getRepos()"> Show Repos
+            <i class="bi bi-search ml-2 "></i>
+        </a>
+    </div>
+</div>
+
+
+<section class="searchProfile">
+    <div class="box-container">
+        <div class="box image">
+            <img src="{{users.avatar_url}}">
+        </div>
+        <div class="box details">
+            <h4>Found: {{users.login}} </h4>
+            <hr>
+            <p>Bio: {{users.bio}}</p>
+            <p>Followers: {{users.followers}}</p>
+            <p>Following: {{users.following}}</p>
+            <p>public repos: {{users.public_repos}}</p>
+            <p>Joined on: {{users.created_at|date}}</p>
+        </div>
+    </div>
+</section>
+<section class="searchrepos">
+    <h4>Repos Found</h4>
+    <div class="box-container">
+        <div class="box"*ngFor='let repo of repos'>
+            <h5 class="filename">
+                <a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a>
+            </h5>
+            <hr>
+            <small class="last-update">Created At:
+                <strong>{{repo.created_at|date}}</strong>
+                Clone:<strong appCloneHighlighter> <a
+                        href="{{repo.clone_url}}">{{repo.clone_url}}</a> 
+                </strong>
+            </small><br>
+            <small >Language:
+                <strong>{{repo.language}}</strong><br>
+                Last Updated:
+                <strong>{{repo.updated_at|date}} </strong>
+            </small>
+
+        </div>
+    </div>
+</section>
