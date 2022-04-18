@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl:'https://api.github.com/'
 };
 
 /*
@@ -12,5 +13,6 @@ export const environment = {
  *
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
+ * token: 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,
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
